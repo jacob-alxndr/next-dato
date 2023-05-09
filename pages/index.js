@@ -21,8 +21,25 @@ export async function getStaticProps() {
   };
 }
 
+const renderComponents = (data) => {
+  const components = data?.home?.components.map((component) => {
+    switch (component?._modelApiKey) {
+      case "card_list":
+        return <ProjectCardList data={component} />;
+        break;
+        break;
+      default:
+        null;
+    }
+  });
+  console.log("renderComponents test", components);
+  return components;
+};
+
 export default function Home({ data }) {
   const cardData = getData();
+  // console.log("renderComponents", renderComponents(data));
+  // console.log("dataDatoCMS", data);
   return (
     <div>
       <Head>
@@ -39,8 +56,9 @@ export default function Home({ data }) {
       </Head>
       <main className={classNames(`${inter.className}`, "padding-x-sm")}>
         <h3>Dato Next App</h3>
-        <h9>{JSON.stringify(data, null, 2)}</h9>
-        {cardData && <ProjectCardList data={cardData} />}
+        {/* <h9>{JSON.stringify(data, null, 2)}</h9> */}
+        {...renderComponents(data)}
+        {/* {cardData && <ProjectCardList data={cardData} />} */}
       </main>
     </div>
   );

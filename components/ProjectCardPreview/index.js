@@ -2,23 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/components/ProjectCardPreview/index.module.scss";
 export default function ProjectCardPreview({ data }) {
+  console.log("ProjectCardPreview", data);
   return (
     <div>
       <Link href={`/project/${data?.slug}`}>
         <div className={styles.card}>
           <div className={styles.media}>
-            <Image
-              src={data?.image?.src}
-              width={800}
-              height={400}
-              alt={data?.image?.alt}
-              // fill={true}
-              // imageOptions={{
-              //   layout: "fill",
-              //   objectFit: "cover",
-              //   objectPosition: "50% 50%",
-              // }}
-            />
+            {data?.image?.map((i) => (
+              <Image
+                key={i?.image?.id}
+                src={i?.image?.url}
+                width={i?.image?.responsiveImage?.width}
+                height={320}
+                alt={data?.title}
+              />
+            ))}
           </div>
 
           <div className={styles.content}>
