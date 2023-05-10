@@ -1,17 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../../styles/components/ProjectCardPreview/index.module.scss";
-export default function ProjectCardPreview({ data }) {
+import styles from "@styles/CardPreview/index.module.scss";
+export default function CardPreview({ data }) {
   return (
     <div>
-      <Link href={`/project/${data?.slug}`}>
+      <Link
+        // URL Object
+        href={{
+          pathname: "/project/[slug]",
+          query: { slug: data?.slug },
+        }}
+        // or
+        // URL Path
+        // href={`/project/${data?.slug}`}
+      >
         <div className={styles.card}>
           <div className={styles.media}>
-            {data?.image?.map((i) => (
+            {data?.image?.map((img, i) => (
               <Image
-                key={i?.image?.id}
-                src={i?.image?.url}
-                width={i?.image?.responsiveImage?.width}
+                key={img?.id}
+                src={img?.image?.url}
+                width={img?.image?.responsiveImage?.width}
                 height={320}
                 alt={data?.title}
               />

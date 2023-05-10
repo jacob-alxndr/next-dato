@@ -1,21 +1,29 @@
 import { getAllSlugs, getProjectData } from "@lib/data";
-import ProjectCardPreview from "@components/ProjectCardPreview";
+import Link from "next/link";
+import Hero from "@components/Hero";
 import GET_ALL_CARDS from "operations/queries/getAllCards";
-
+import { useRouter } from "next/router";
 import { request } from "@lib/datocms";
-export default function projectPage(props) {
-  const { data, slug } = props;
+export default function ProjectPage(props) {
+  const router = useRouter();
+  const {
+    data: {
+      allCardLists: {
+        0: { cards },
+      },
+    },
+  } = props;
 
+  const slug = router.query.slug;
   const renderCard = (cards) => {
-    const [cardData] = cards.filter((c) => c?.slug === slug);
-    console.log("slug", cardData);
-    return <ProjectCardPreview data={cardData} />;
+    const [data] = cards.filter((c) => c?.slug === slug);
+    return <Hero data={data} />;
   };
   return (
     <div>
-      {/* <h1>{JSON.stringify(data)}</h1> */}
-      {renderCard(data?.allCardLists[0]?.cards)}
-      {/* <ProjectCardPreview data={data} /> */}
+      {renderCard(cards)}
+      <p>Post: {router.query.slug}</p>
+      <Link href="/">🔙 back to Home</Link>
     </div>
   );
 }
@@ -39,13 +47,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
   const data = await request({
     query: GET_ALL_CARDS,
     variables: { limit: 10 },
   });
   return {
-    props: { slug, data },
+    props: { data },
   };
 }
 // export const getStaticProps = ({ params }) => {

@@ -8,6 +8,8 @@ fragment CardListFields on CardListRecord {
  cards {
       ${CardFields}
   }
+  verticalPaddingTop
+  verticalPaddingBottom
    
   }
 `;
