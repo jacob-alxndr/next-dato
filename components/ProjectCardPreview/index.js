@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/components/ProjectCardPreview/index.module.scss";
 export default function ProjectCardPreview({ data }) {
-  console.log("ProjectCardPreview", data);
   return (
     <div>
       <Link href={`/project/${data?.slug}`}>
