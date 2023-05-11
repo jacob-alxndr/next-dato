@@ -79,6 +79,7 @@ export default function Layout({
           ...context, // If you have data that needs to be shared with all components, provide a value to the context prop. The prop will be passed to each component.
         }}
       />
+      {children}
     </>
   );
 }

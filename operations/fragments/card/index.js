@@ -1,5 +1,6 @@
 import Buttons from "../../imports/buttons";
-import ImageFields from "operations/imports/media/image";
+import BackgroundImageFields from "../../imports/backgroundMedia/image";
+
 const CardFields = `
       slug
       id
@@ -7,9 +8,11 @@ const CardFields = `
       title
       subtitle
       description
-      image {
-        ${ImageFields}
-      }
+      backgroundMedia {
+        ... on BackgroundImageRecord {
+            ${BackgroundImageFields}
+        }
+    }
       ${Buttons}
 `;
 

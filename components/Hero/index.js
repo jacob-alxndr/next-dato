@@ -4,19 +4,20 @@ import classNames from "classnames";
 // import { useEffect, useMemo, useRef, useState } from "react";
 // import { useIntersection } from "react-use";
 import styles from "@styles/Hero/index.module.scss";
-
+import mapping from "./mapping";
+import { useEffect, useState } from "react";
 const Hero = (props) => {
+  const [data, setData] = useState(props);
   const {
-    data: {
-      index,
-      eyebrow,
-      title,
-      subtitle,
-      description,
-      titleSize,
-      image: { 0: image },
-    },
-  } = props;
+    // index,
+    eyebrow,
+    title,
+    titleSize,
+    backgroundImage,
+    backgroundMedia,
+  } = data;
+  console.log("hero props", props);
+
   // const hasInit = useStore(({ hasInit }) => hasInit);
   // const setHasInit = useStore((state) => state.setHasInit);
   // const setNavTheme = useStore((state) => state.setNavTheme);
@@ -42,6 +43,9 @@ const Hero = (props) => {
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [intersection]);
+  // useEffect(() => {
+  //   console.log("UE props:", props);
+  // }, [props]);
 
   // const onMouseMove = ({ clientX, clientY }) => {
   //   const {
@@ -116,7 +120,10 @@ const Hero = (props) => {
 
       <div
         className={styles.background}
-        style={{ backgroundImage: `url(${image?.image?.url})` }}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: `${backgroundMedia[0]?.horizontalAlignment} ${backgroundMedia[0]?.verticalAlignment}`,
+        }}
       ></div>
     </div>
   );

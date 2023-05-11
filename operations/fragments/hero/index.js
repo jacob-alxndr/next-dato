@@ -6,6 +6,14 @@ fragment HeroFields on HeroRecord {
     id
     titleSize
     _modelApiKey
+    id
+    titleSize
+    _modelApiKey
+    backgroundMedia {
+        ... on BackgroundImageRecord {
+            ${BackgroundImageFields}
+        }
+    }
 
 }  
 `;

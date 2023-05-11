@@ -16,11 +16,11 @@ export default function CardPreview({ data }) {
       >
         <div className={styles.card}>
           <div className={styles.media}>
-            {data?.image?.map((img, i) => (
+            {data?.backgroundMedia?.map((img, i) => (
               <Image
                 key={img?.id}
-                src={img?.image?.url}
-                width={img?.image?.responsiveImage?.width}
+                src={img?.backgroundImage?.url}
+                width={img?.backgroundImage?.width}
                 height={320}
                 alt={data?.title}
               />

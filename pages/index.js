@@ -21,46 +21,29 @@ const components = {
   //   comp: dynamic(() => import('../components/Global/GlobalNavigation')),
   //   mapping: require('../components/Global/GlobalNavigation/mapping'),
   // },
-  // hero: {
-  //   comp: dynamic(() => import('../components/Hero')),
-  //   mapping: require(`../components/Hero/mapping`),
-  // },
   // promo: {
   //   comp: dynamic(() => import('../components/Promo')),
   //   mapping: require(`../components/Promo/mapping`),
   // },
+  hero: {
+    comp: dynamic(() => import("@components/Hero")),
+    mapping: require(`@components/Hero/mapping`),
+  },
 
   card_list: {
-    comp: dynamic(() => import("../components/CardList")),
-    // mapping: require(`../components/CardList/mapping`),
+    comp: dynamic(() => import("@components/CardList")),
+    mapping: require(`@components/CardList/mapping`),
   },
-  // demosection: {
-  //   comp: dynamic(() => import("../components/DemoSection")),
-  //   mapping: require(`../components/DemoSection/mapping`),
-  // },
+
   // global_footer: {
   //   comp: dynamic(() => import('../components/Global/GlobalFooter')),
   //   mapping: require('../components/Global/GlobalFooter/mapping'),
   // },
 };
 
-const renderComponents = (data) => {
-  const components = data?.map((component) => {
-    switch (component?._modelApiKey) {
-      case "card_list":
-        return <CardList data={component} />;
-        break;
-        break;
-      default:
-        null;
-    }
-  });
-  return components;
-};
-
 export default function Home({ data }) {
   const {
-    home: { components: bodyComponents },
+    home: { hero, components: bodyComponents },
     // _site,
     // globalNavigation,
     // globalFooter,
@@ -68,11 +51,9 @@ export default function Home({ data }) {
 
   return (
     <div>
-      <Layout components={components} data={[...bodyComponents]}>
+      <Layout components={components} data={[hero, ...bodyComponents]}>
         <main>
-          <h3>Dato Next App</h3>{" "}
-          {/* <h9>{JSON.stringify(data, null, 2)}</h9> */}
-          {...renderComponents(bodyComponents)}
+          <h3>Dato Next App</h3>
         </main>
       </Layout>
     </div>
