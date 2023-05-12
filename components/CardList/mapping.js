@@ -47,3 +47,25 @@
 // };
 
 // export default mapping;
+import getButtons from "../Button/mapping";
+
+const getCardButtons = (cards) => {
+  const cardsWithButtons = cards.map((c) => {
+    const buttons = c?.buttons && getButtons(c?.buttons);
+    return { ...c, buttons };
+  });
+  return cardsWithButtons;
+};
+
+const mapping = (data) => {
+  if (!data) return "";
+
+  const cards = getCardButtons(data?.cards);
+  console.log(data?.cards);
+  return {
+    ...data,
+    cards,
+  };
+};
+
+export default mapping;

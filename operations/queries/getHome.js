@@ -1,6 +1,7 @@
 import HeroFields from "../fragments/hero";
 import DemoSectionFields from "../fragments/demoSection";
 import CardListFields from "operations/fragments/cardList";
+import GlobalNavigationFields from "operations/fragments/globalNavigation";
 const GET_HOME = `
 query HomeQuery {
   home {
@@ -16,6 +17,9 @@ query HomeQuery {
     hero {
       ...HeroFields
     }
+  }
+  globalNavigation {
+    ${GlobalNavigationFields}
   }
 
 }

@@ -1,12 +1,28 @@
 import "../styles/app.globals.scss";
-import { Inter } from "next/font/google";
 import Head from "next/head";
-const inter = Inter({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-base",
-});
+import { useEffect, useState } from "react";
+import { mobileDetect } from "@utils/mobileDetect";
+import GlobalNavigation from "@components/Global/GlobalNavigation";
+import { ibmPlexMono, ibmPlexSans } from "@lib/fonts";
+import { useStore } from "@lib/store";
+
 export default function App({ Component, pageProps }) {
+  // const [isTouch, setIsTouch] = useState(false);
+  const isTouch = useStore(({ isTouch }) => isTouch);
+  const setIsTouch = useStore((state) => state.setIsTouch);
+
+  useEffect(() => {
+    if (isTouch) {
+      document.body.classList.add("is-touch");
+      setSound(false);
+    } else {
+      document.body.classList.remove("is-touch");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTouch]);
+  useEffect(() => {
+    setIsTouch(mobileDetect());
+  }, []);
   return (
     <>
       <Head>
@@ -15,9 +31,9 @@ export default function App({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1"
         ></meta>
-        {/* <link rel="preconnect" href={`//graphql.datocms.com`}></link>
+        <link rel="preconnect" href={`//graphql.datocms.com`}></link>
         <link rel="dns-preconnect" href="https://datocms-assets.com"></link>
-        <link rel="dns-prefetch" href="https://datocms-assets.com"></link> */}
+        <link rel="dns-prefetch" href="https://datocms-assets.com"></link>
         {/* EXAMPLE:: Adobe typekit integration */}
         {/* <link
           rel="stylesheet"
@@ -25,11 +41,13 @@ export default function App({ Component, pageProps }) {
         ></link> */}
         <style>{`
           :root {
-            --font-base: ${inter.style.fontFamily};
+            --font-primary: ${ibmPlexSans.style.fontFamily};
+            --font-secondary: ${ibmPlexMono.style.fontFamily};
 
           }
         `}</style>
       </Head>
+      <GlobalNavigation classes="js-site js-site--mobile" />
       <Component {...pageProps} />
     </>
   );

@@ -1,6 +1,5 @@
-import { FormFields } from 'components/Form/queries';
-import ExternalButtonFields from '../../imports/buttons/external';
-import InternalButtonFields from '../../imports/buttons/internal';
+import ExternalButtonFields from "../../imports/buttons/external";
+import InternalButtonFields from "../../imports/buttons/internal";
 
 const GlobalNavigationFields = `
 id
@@ -13,9 +12,7 @@ primary {
       ${InternalButtonFields}
     }
 }
-contactForm {
-    ${FormFields}
-}
+
 `;
 
 export default GlobalNavigationFields;

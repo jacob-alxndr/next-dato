@@ -3,8 +3,11 @@ import { useRouter } from "next/router";
 import { useEffect, useLayoutEffect } from "react";
 import { renderMetaTags } from "react-datocms";
 import { ComponentLoader } from "core/ComponentLoader";
+import { useStore } from "@lib/store";
+import mappingNav from "@components/Global/GlobalNavigation/mapping";
 export default function Layout({
   children,
+  navigationData: cmsNavigationData,
   components,
   data,
   seo,
@@ -18,8 +21,8 @@ export default function Layout({
     router.asPath.split("?")[0]
   }`;
 
-  // const navigationData = useStore(({ navigationData }) => navigationData);
-  // const setNavigationData = useStore((state) => state.setNavigationData);
+  const navigationData = useStore(({ navigationData }) => navigationData);
+  const setNavigationData = useStore((state) => state.setNavigationData);
   // const footerData = useStore(({ footerData }) => footerData);
   // const setFooterData = useStore((state) => state.setFooterData);
   // const setPreview = useStore(({ setPreview }) => setPreview);
@@ -28,6 +31,14 @@ export default function Layout({
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!navigationData) {
+      const mapped = mappingNav(cmsNavigationData);
+      setNavigationData(mapped);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cmsNavigationData]);
 
   // useEffect(() => {
   //   if (!navigationData) {

@@ -10,7 +10,7 @@ fragment CardListFields on CardListRecord {
   }
   verticalPaddingTop
   verticalPaddingBottom
-   
+  titleSize
   }
 `;
 

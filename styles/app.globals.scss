@@ -1,4 +1,4 @@
-@use './shared/global';
+@use "./shared/global";
 
 :root {
   --clip: 0;
@@ -111,17 +111,9 @@ h6 {
 .u-heading--extra-display {
   @extend %u-heading-extra-display;
   @include global.fontSize(
-    map_get(global.$typography-size, 'extra-display'),
-    map_get(global.$typography-line-height, 'extra-display'),
-    map_get(global.$typography-letter-spacing, 'extra-display')
-  );
-}
-.u-heading--extra-display-bold {
-  @extend %u-heading-extra-display-bold;
-  @include global.fontSize(
-    map_get(global.$typography-size, 'extra-display'),
-    map_get(global.$typography-line-height, 'extra-display-bold'),
-    map_get(global.$typography-letter-spacing, 'extra-display')
+    map_get(global.$typography-size, "extra-display"),
+    map_get(global.$typography-line-height, "extra-display"),
+    map_get(global.$typography-letter-spacing, "extra-display")
   );
 }
 
@@ -129,49 +121,36 @@ h6 {
   @extend %u-heading-display;
 }
 
-.u-heading--alpha,
 .u-heading--h1,
 h1 {
   @extend %u-heading-h1;
 }
 
-.u-heading--h1-bold {
-  @extend %u-heading-h1-bold;
-}
-
-.u-heading--beta,
 .u-heading--h2,
 h2 {
   @extend %u-heading-h2;
 }
 
-.u-heading--gamma,
 .u-heading--h3,
 h3 {
   @extend %u-heading-h3;
 }
 
-.u-heading-delta,
 .u-heading--h4,
 h4 {
   @extend %u-heading-h4;
 }
 
-.u-heading--epsilon,
 .u-heading--h5,
 h5 {
   @extend %u-heading-h5;
 }
 
-.u-heading--zeta,
 .u-heading--h6,
 h6 {
   @extend %u-heading-h6;
 }
 
-.u-heading--h7 {
-  @extend %u-heading-h7;
-}
 // Text Heading Content Width Sizes
 .u-heading-width--small {
   @extend %u-heading-width-small;

@@ -6,35 +6,19 @@ import CardList from "@components/CardList";
 import Layout from "core/Layout";
 import dynamic from "next/dynamic";
 
-export async function getStaticProps() {
-  const data = await request({
-    query: GET_HOME,
-    variables: { limit: 10 },
-  });
-  return {
-    props: { data },
-  };
-}
-
 const components = {
-  // global_navigation: {
-  //   comp: dynamic(() => import('../components/Global/GlobalNavigation')),
-  //   mapping: require('../components/Global/GlobalNavigation/mapping'),
-  // },
-  // promo: {
-  //   comp: dynamic(() => import('../components/Promo')),
-  //   mapping: require(`../components/Promo/mapping`),
-  // },
+  global_navigation: {
+    comp: dynamic(() => import("@components/Global/GlobalNavigation")),
+    mapping: require("@components/Global/GlobalNavigation/mapping"),
+  },
   hero: {
     comp: dynamic(() => import("@components/Hero")),
     mapping: require(`@components/Hero/mapping`),
   },
-
   card_list: {
     comp: dynamic(() => import("@components/CardList")),
     mapping: require(`@components/CardList/mapping`),
   },
-
   // global_footer: {
   //   comp: dynamic(() => import('../components/Global/GlobalFooter')),
   //   mapping: require('../components/Global/GlobalFooter/mapping'),
@@ -45,20 +29,32 @@ export default function Home({ data }) {
   const {
     home: { hero, components: bodyComponents },
     // _site,
-    // globalNavigation,
+    globalNavigation,
     // globalFooter,
   } = data;
 
   return (
     <div>
-      <Layout components={components} data={[hero, ...bodyComponents]}>
-        <main>
-          <h3>Dato Next App</h3>
-        </main>
+      <Layout
+        components={components}
+        navigationData={globalNavigation}
+        data={[hero, ...bodyComponents]}
+      >
+        <main></main>
       </Layout>
     </div>
   );
 }
+export async function getStaticProps() {
+  const data = await request({
+    query: GET_HOME,
+    variables: { limit: 10 },
+  });
+  return {
+    props: { data },
+  };
+}
+
 // export default function Home() {
 //   return (
 //     <>
