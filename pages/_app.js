@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { mobileDetect } from "@utils/mobileDetect";
 import GlobalNavigation from "@components/Global/GlobalNavigation";
+import GlobalFooter from "@components/Global/GlobalFooter";
 import { ibmPlexMono, ibmPlexSans } from "@lib/fonts";
 import { useStore } from "@lib/store";
 
@@ -49,6 +50,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <GlobalNavigation classes="js-site js-site--mobile" />
       <Component {...pageProps} />
+      <GlobalFooter classes="js-site js-site--mobile" />
     </>
   );
 }

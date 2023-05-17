@@ -30,7 +30,7 @@ export default function Home({ data }) {
     home: { hero, components: bodyComponents },
     // _site,
     globalNavigation,
-    // globalFooter,
+    globalFooter,
   } = data;
 
   return (
@@ -38,10 +38,9 @@ export default function Home({ data }) {
       <Layout
         components={components}
         navigationData={globalNavigation}
+        globalFooterData={globalFooter}
         data={[hero, ...bodyComponents]}
-      >
-        <main></main>
-      </Layout>
+      />
     </div>
   );
 }

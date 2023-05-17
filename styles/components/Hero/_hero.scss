@@ -8,7 +8,7 @@
   // Temp
 
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   min-height: 80vh;
   margin-bottom: 4rem;
   // opacity: 0;
@@ -42,8 +42,9 @@
 .content {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  max-width: global.rem(1180);
+  max-width: global.rem(980);
   position: relative;
   text-align: center;
   z-index: 1;
