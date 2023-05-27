@@ -17,6 +17,7 @@ export default function CardList(props) {
   console.log("CardList", props);
   return (
     <div
+      id={title}
       className={classNames(
         styles.container,
         // styles[`${variant}`],

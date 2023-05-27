@@ -5,9 +5,12 @@ import { renderMetaTags } from "react-datocms";
 import { ComponentLoader } from "core/ComponentLoader";
 import { useStore } from "@lib/store";
 import mappingNav from "@components/Global/GlobalNavigation/mapping";
+import mappingFooter from "@components/Global/GlobalFooter/mapping";
+
 export default function Layout({
   children,
   navigationData: cmsNavigationData,
+  footerData: cmsFooterData,
   components,
   data,
   seo,
@@ -23,8 +26,8 @@ export default function Layout({
 
   const navigationData = useStore(({ navigationData }) => navigationData);
   const setNavigationData = useStore((state) => state.setNavigationData);
-  // const footerData = useStore(({ footerData }) => footerData);
-  // const setFooterData = useStore((state) => state.setFooterData);
+  const footerData = useStore(({ footerData }) => footerData);
+  const setFooterData = useStore((state) => state.setFooterData);
   // const setPreview = useStore(({ setPreview }) => setPreview);
 
   useLayoutEffect(() => {
@@ -35,6 +38,7 @@ export default function Layout({
   useEffect(() => {
     if (!navigationData) {
       const mapped = mappingNav(cmsNavigationData);
+      console.log("mapped", mapped);
       setNavigationData(mapped);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,13 +57,13 @@ export default function Layout({
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [cmsNavigationData]);
 
-  // useEffect(() => {
-  //   if (!footerData) {
-  //     const mapped = mappingFooter(cmsFooterData);
-  //     setFooterData(mapped);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [cmsFooterData]);
+  useEffect(() => {
+    if (!footerData) {
+      const mapped = mappingFooter(cmsFooterData);
+      setFooterData(mapped);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cmsFooterData]);
 
   // useEffect(() => {
   //   setPreview(preview);

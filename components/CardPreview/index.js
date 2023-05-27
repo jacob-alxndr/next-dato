@@ -4,7 +4,6 @@ import styles from "@styles/CardPreview/index.module.scss";
 import classNames from "classnames";
 import { renderButtons } from "@components/Button/utils";
 export default function CardPreview({ data }) {
-  console.log("CardPreview", data);
   return (
     <div>
       <div

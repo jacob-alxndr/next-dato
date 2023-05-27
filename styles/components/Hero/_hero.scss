@@ -8,10 +8,8 @@
   // Temp
 
   display: flex;
-  // justify-content: center;
-  min-height: 80vh;
-  margin-bottom: 4rem;
-  // opacity: 0;
+  min-height: 50vh;
+  margin-bottom: 0rem;
   position: relative;
   text-align: center;
   width: 100%;
@@ -26,15 +24,21 @@
   display: flex;
   justify-content: center;
   // max-width: global.rem(1100);
+  .title{
+    font-weight: 700;
+    color: global.$color-title;
+  }
   .title,
   .description {
     text-align: left;
   }
   .description {
+    max-width:23rem;
     p {
-      @include global.fontSize(38, 48);
-      color: global.$color-grey-40;
+      @include global.fontSize(18, 24);
+      color: global.$color-paragraph;
       font-weight: 100;
+      margin: 0;
     }
   }
 }

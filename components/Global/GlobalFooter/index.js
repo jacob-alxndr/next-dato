@@ -3,9 +3,12 @@ import styles from "@styles/GlobalFooter/index.module.scss";
 import classNames from "classnames";
 import { renderButtons } from "@components/Button/utils";
 import Button from "@components/Button";
-
+import { useStore } from "@lib/store";
 const GlobalFooter = (props) => {
   const { primaryColumns } = props;
+  const footerData = useStore(({ footerData }) => footerData);
+
+  const { pagesTitle } = footerData || props;
   const renderColumns = () => {
     if (!primaryColumns) return "";
     return primaryColumns?.map((column, index) => {
@@ -28,7 +31,10 @@ const GlobalFooter = (props) => {
   };
 
   return (
-    <footer className={classNames(styles.container, "padding-x-sm")}>
+    <footer
+      id={pagesTitle}
+      className={classNames(styles.container, "padding-x-lg")}
+    >
       <div className={styles.content}>
         <div className={styles.logoContainer}>
           <Button

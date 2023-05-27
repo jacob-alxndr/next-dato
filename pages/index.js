@@ -15,19 +15,23 @@ const components = {
     comp: dynamic(() => import("@components/Hero")),
     mapping: require(`@components/Hero/mapping`),
   },
+  layout: {
+    comp: dynamic(() => import("@components/Layout")),
+    mapping: require(`@components/Layout/mapping`),
+  },
   card_list: {
     comp: dynamic(() => import("@components/CardList")),
     mapping: require(`@components/CardList/mapping`),
   },
-  // global_footer: {
-  //   comp: dynamic(() => import('../components/Global/GlobalFooter')),
-  //   mapping: require('../components/Global/GlobalFooter/mapping'),
-  // },
+  global_footer: {
+    comp: dynamic(() => import("../components/Global/GlobalFooter")),
+    mapping: require("../components/Global/GlobalFooter/mapping"),
+  },
 };
 
 export default function Home({ data }) {
   const {
-    home: { hero, components: bodyComponents },
+    home: { layout, components: bodyComponents },
     // _site,
     globalNavigation,
     globalFooter,
@@ -38,8 +42,8 @@ export default function Home({ data }) {
       <Layout
         components={components}
         navigationData={globalNavigation}
-        globalFooterData={globalFooter}
-        data={[hero, ...bodyComponents]}
+        footerData={globalFooter}
+        data={[layout, ...bodyComponents]}
       />
     </div>
   );

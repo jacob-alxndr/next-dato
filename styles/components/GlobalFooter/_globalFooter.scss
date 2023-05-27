@@ -1,10 +1,10 @@
 @use "/styles/shared/global";
 
 .container {
-  position: relative;
+  position: fixed;
+  bottom: global.rem(0);
   z-index: global.$zIndex-4--footer;
   @include global.size(100%, auto);
-  margin-top: global.rem(48);
   padding-bottom: global.rem(48);
 
   @include global.mq("tablet") {
@@ -17,7 +17,7 @@
 }
 .content {
   margin: 0 auto;
-  max-width: 1024px;
+  // max-width: 1024px;
 }
 
 .grid {
