@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@styles/CardPreview/index.module.scss";
-import classNames from "classnames";
-import { renderButtons } from "@components/Button/utils";
+import clsx from "clsx";
+import { renderButtons } from "@components/UtilityComponents/Button/utils";
 export default function CardPreview({ data }) {
   return (
     <div>
@@ -31,9 +31,7 @@ export default function CardPreview({ data }) {
           </div>
 
           <div className={styles.content}>
-            {data?.eyebrow && (
-              <span className={styles.eyebrow}>{data?.eyebrow}</span>
-            )}
+            {data?.eyebrow && <span className={styles.eyebrow}>{data?.eyebrow}</span>}
             <h3 className={styles.title}>{data?.title}</h3>
             <span className={styles.subtitle}>{data?.subtitle}</span>
             <div className={styles.description}>
@@ -41,7 +39,7 @@ export default function CardPreview({ data }) {
               {/* <Markdown>{content}</Markdown> */}
             </div>
             {data?.buttons && (
-              <div className={classNames(styles.buttons, "js-sub-content")}>
+              <div className={clsx(styles.buttons, "js-sub-content")}>
                 {renderButtons(data?.buttons)}
               </div>
             )}

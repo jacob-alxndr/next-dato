@@ -58,7 +58,7 @@
   }
 }
 .description {
-  @include global.fontSize(14, 20);
+  // @include global.fontSize(14, 20);
   p {
     margin: 0 0 global.rem(16);
   }
@@ -74,7 +74,7 @@
 }
 
 .legal {
-  @include global.fontSize(12, 14);
+  // @include global.fontSize(12, 14);
   // color: global.$color-brown-transparent-400-50;
   margin-top: global.rem(48);
   @include global.mq("tablet") {

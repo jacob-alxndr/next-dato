@@ -1,32 +1,19 @@
-import HeroFields from "../fragments/hero";
-import MastheadFields from "../fragments/masthead";
-import DemoSectionFields from "../fragments/demoSection";
-import CardListFields from "operations/fragments/cardList";
-import BackgroundImageFields from "operations/imports/backgroundMedia/image";
 const GET_LANDING_PAGE = `
 query LandingPageQuery($slug: String) {
     page: allLandingPages( filter: {slug: {eq: $slug}}) {
         _modelApiKey
         _publishedAt
         id
-        masthead {
-            _modelApiKey
-            eyebrow
-            title
-            backgroundMedia {
-                ... on BackgroundImageRecord {
-                    ${BackgroundImageFields}
-                }
+
+                components {
+            ... on DemosectionRecord {
+                ...DemoSectionFields
             }
-          }
-        components {
-            ... on CardListRecord {
-              ...CardListFields
-            }  
-          }
+        }
+    
     }    
 }
-${CardListFields}
+
 
 
 `;

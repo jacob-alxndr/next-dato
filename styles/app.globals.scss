@@ -13,7 +13,7 @@ body {
   overscroll-behavior: none;
   padding: 0;
   scroll-behavior: smooth;
-  background: global.$color-black; 
+  background: global.$color-black;
   color: global.$color-white;
   @include global.fontSize(16, 24);
   @include global.font-primaryN4;
@@ -120,18 +120,18 @@ h6 {
   margin: 0;
 }
 
-.u-heading--extra-display {
-  @extend %u-heading-extra-display;
-  @include global.fontSize(
-    map_get(global.$typography-size, "extra-display"),
-    map_get(global.$typography-line-height, "extra-display"),
-    map_get(global.$typography-letter-spacing, "extra-display")
-  );
-}
+// .u-heading--extra-display {
+//   @extend %u-heading-extra-display;
+//   // @include global.fontSize(
+//   //   map_get(global.$typography-size, "extra-display"),
+//   //   map_get(global.$typography-line-height, "extra-display"),
+//   //   map_get(global.$typography-letter-spacing, "extra-display")
+//   // );
+// }
 
-.u-heading--display {
-  @extend %u-heading-display;
-}
+// .u-heading--display {
+//   @extend %u-heading-display;
+// }
 
 .u-heading--h1,
 h1 {
@@ -153,14 +153,17 @@ h4 {
   @extend %u-heading-h4;
 }
 
-.u-heading--h5,
+u-subheading--sh1,
 h5 {
-  @extend %u-heading-h5;
+  @extend %u-subheading-sh1;
 }
-
-.u-heading--h6,
+.u-subheading--sh2,
 h6 {
-  @extend %u-heading-h6;
+  @extend %u-subheading-sh2;
+}
+.u-subheading--sh3,
+h7 {
+  @extend %u-subheading-sh3;
 }
 
 // Text Heading Content Width Sizes

@@ -1,7 +1,6 @@
-import classNames from "classnames";
 import styles from "../../styles/components/CardList/index.module.scss";
 import CardPreview from "@components/CardPreview";
-
+import clsx from "clsx";
 export default function CardList(props) {
   const {
     eyebrow,
@@ -18,7 +17,7 @@ export default function CardList(props) {
   return (
     <div
       id={title}
-      className={classNames(
+      className={clsx(
         styles.container,
         // styles[`${variant}`],
         // styles[`align--${alignment}`],
@@ -27,8 +26,7 @@ export default function CardList(props) {
         `u-vertical-padding--top-${verticalPaddingTop}`,
         `u-vertical-padding--bottom-${verticalPaddingBottom}`,
         {
-          [`u-vertical-padding--top-${verticalPaddingTopMobile}-mobile`]:
-            verticalPaddingTopMobile,
+          [`u-vertical-padding--top-${verticalPaddingTopMobile}-mobile`]: verticalPaddingTopMobile,
         },
         {
           [`u-vertical-padding--bottom-${verticalPaddingBottomMobile}-mobile`]:
@@ -39,11 +37,7 @@ export default function CardList(props) {
     >
       <div className={styles.heading}>
         {eyebrow && <span>{eyebrow}</span>}
-        {title && (
-          <div className={classNames(styles.title, `u-heading--${titleSize}`)}>
-            {title}
-          </div>
-        )}
+        {title && <div className={clsx(styles.title, `u-heading--${titleSize}`)}>{title}</div>}
       </div>
 
       {cards && (

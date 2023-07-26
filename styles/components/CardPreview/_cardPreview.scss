@@ -23,8 +23,7 @@
     .content {
       padding: 1rem 2rem 2rem;
       .title {
-        @include global.font-secondaryN4;
-        @include global.fontSize(18, 24);
+        // @include global.fontSize(18, 24);
       }
       .subtitle {
         @extend %body--tiny;

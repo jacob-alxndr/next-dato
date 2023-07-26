@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "@styles/Hero/index.module.scss";
 import mapping from "./mapping";
 import { useEffect, useState } from "react";
@@ -17,13 +17,11 @@ const Hero = (props) => {
   } = data;
 
   return (
-    <div className={classNames(styles.container)}>
-      <div className={classNames(styles.header, "padding-x-lg")}>
+    <div className={clsx(styles.container)}>
+      <div className={clsx(styles.header, "padding-x-lg")}>
         <div className={styles.content}>
-          <div className={classNames(styles.eyebrow)}>{eyebrow}</div>
-          <div className={classNames(styles.title, `u-heading--${titleSize}`)}>
-            {title}
-          </div>
+          <div className={clsx(styles.eyebrow)}>{eyebrow}</div>
+          <div className={clsx(styles.title, `u-heading--${titleSize}`)}>{title}</div>
           <div className={styles.description}>
             <StructuredText data={description} />
           </div>

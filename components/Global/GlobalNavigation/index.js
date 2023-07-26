@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import Button from "../../Button";
+import Button from "@components/UtilityComponents/Button";
 import styles from "@styles/GlobalNavigation/index.module.scss";
-import classNames from "classnames";
+import clsx from "clsx";
 import { useRouter } from "next/router";
 import { useStore } from "@lib/store";
 // import debounce from "lodash.debounce";
@@ -26,21 +26,21 @@ const GlobalNavigation = (props) => {
   useEffect(() => {}, []);
 
   return (
-    <header className={classNames(styles.header, classes, "padding-x-lg")}>
+    <header className={clsx(styles.header, classes, "padding-x-lg")}>
       <nav
-        className={classNames(
+        className={clsx(
           styles.nav
           // { [styles["is-mobile"]]: isMobile },
           // { [styles["is-active"]]: mobileActive },
         )}
       >
-        <div className={classNames(styles.navContent)}>
+        <div className={clsx(styles.navContent)}>
           {primary &&
             primary?.map((button) => {
               return (
                 <div
                   key={button?.buttonId}
-                  className={classNames(
+                  className={clsx(
                     // {
                     // [styles["hide"]]:
                     // (!isMobile && button?.buttonText === "Home") ||
@@ -52,7 +52,7 @@ const GlobalNavigation = (props) => {
                   <Button
                     data={button}
                     attr={{ ["data-text"]: button?.buttonText }}
-                    classes={classNames(styles.link, {
+                    classes={clsx(styles.link, {
                       [styles.active]: router.asPath === button?.buttonUrl,
                     })}
                     // All default style links should not have animation or special styling

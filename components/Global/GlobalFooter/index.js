@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "@styles/GlobalFooter/index.module.scss";
-import classNames from "classnames";
-import { renderButtons } from "@components/Button/utils";
-import Button from "@components/Button";
+import clsx from "clsx";
+import { renderButtons } from "@components/UtilityComponents/Button/utils";
+import Button from "@components/UtilityComponents/Button";
 import { useStore } from "@lib/store";
 const GlobalFooter = (props) => {
   const { primaryColumns } = props;
@@ -15,10 +15,7 @@ const GlobalFooter = (props) => {
       const columnTitle = column?.title;
       const links = renderButtons(column?.links, styles.columnLinks);
       return (
-        <div
-          key={`${columnTitle}${index}`}
-          className={classNames(styles.column)}
-        >
+        <div key={`${columnTitle}${index}`} className={clsx(styles.column)}>
           {column?.description && (
             <div className={styles.description}>
               <p>{column?.description}</p>
@@ -31,10 +28,7 @@ const GlobalFooter = (props) => {
   };
 
   return (
-    <footer
-      id={pagesTitle}
-      className={classNames(styles.container, "padding-x-lg")}
-    >
+    <footer id={pagesTitle} className={clsx(styles.container, "padding-x-lg")}>
       <div className={styles.content}>
         <div className={styles.logoContainer}>
           <Button

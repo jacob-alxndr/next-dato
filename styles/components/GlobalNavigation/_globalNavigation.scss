@@ -22,7 +22,7 @@
   &Content {
     display: flex;
     a {
-      @include global.fontSize(14, 20);
+      // @include global.fontSize(14, 20);
     }
   }
 }
