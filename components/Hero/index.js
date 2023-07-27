@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import styles from "@styles/Hero/index.module.scss";
-import mapping from "./mapping";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StructuredText } from "react-datocms";
 const Hero = (props) => {
   const [data, setData] = useState(props);

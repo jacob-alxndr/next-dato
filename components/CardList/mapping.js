@@ -48,7 +48,7 @@
 
 // export default mapping;
 import getButtons from "@components/UtilityComponents/Button/mapping";
-
+import { getComponentPadding } from "@utils/helpers";
 const getCardButtons = (cards) => {
   const cardsWithButtons = cards.map((c) => {
     const buttons = c?.buttons && getButtons(c?.buttons);
@@ -61,9 +61,9 @@ const mapping = (data) => {
   if (!data) return "";
 
   const cards = getCardButtons(data?.cards);
-  console.log(data?.cards);
   return {
     ...data,
+    componentPadding: getComponentPadding(data),
     cards,
   };
 };
