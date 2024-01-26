@@ -6,7 +6,7 @@
   // background-size: 60%;
 
   // Temp
-
+  background-color: global.$color-paper;
   display: flex;
   min-height: 50vh;
   margin-bottom: 0rem;
@@ -24,18 +24,22 @@
   display: flex;
   justify-content: center;
   // max-width: global.rem(1100);
-  .title{
-    font-weight: 700;
-    color: global.$color-title;
+  .eyebrow,
+  .title {
+    color: global.$color-ink;
   }
+  .title {
+    font-weight: 700;
+  }
+  .eyebrow,
   .title,
   .description {
     text-align: left;
   }
   .description {
-    max-width:23rem;
+    max-width: 23rem;
     p {
-      @include global.fontSize(18, 24);
+      // @include global.fontSize(18, 24);
       color: global.$color-paragraph;
       font-weight: 100;
       margin: 0;

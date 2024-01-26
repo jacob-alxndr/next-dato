@@ -1,7 +1,10 @@
+import { getAllSlugs } from "@lib/data";
 import { request } from "../lib/datocms";
+import GET_ALL_LANDING_PAGES from "operations/queries/getAllLandingPages";
 import GET_HOME from "operations/queries/getHome";
 import Layout from "core/Layout";
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 // import PageTransition from "core/PageTransition";
 const components = {
   global_navigation: {
@@ -11,6 +14,10 @@ const components = {
   global_drawer: {
     comp: dynamic(() => import("@components/Global/GlobalDrawer")),
     mapping: require("@components/Global/GlobalDrawer/mapping"),
+  },
+  hero: {
+    comp: dynamic(() => import("@components/Hero")),
+    mapping: require(`@components/Hero/mapping`),
   },
   demosection: {
     comp: dynamic(() => import("../components/DemoSection")),
@@ -22,12 +29,12 @@ const components = {
   },
 };
 
-export default function Home({ data }) {
+export default function Home({ data, preview }) {
   const {
-    // home: { hero, components: bodyComponents },
-    home: { components: bodyComponents },
+    home: { hero, components: bodyComponents },
+    // home: { components: bodyComponents },
     // _site,
-    // globalNavigation,
+    globalNavigation,
     // globalDrawer,
     globalFooter,
   } = data;
@@ -36,23 +43,25 @@ export default function Home({ data }) {
     // <PageTransition>
     <Layout
       components={components}
-      // navigationData={globalNavigation}
-      // drawerData={globalDrawer}
+      navigationData={globalNavigation}
       footerData={globalFooter}
-      // data={[hero, ...bodyComponents]}
-      data={[...bodyComponents]}
+      data={[hero, ...bodyComponents]}
+      preview={preview}
+      // drawerData={globalDrawer}
+      // data={[...bodyComponents]}
     />
     // </PageTransition>
   );
 }
+
 export async function getStaticProps(context) {
+  const { preview } = context;
   const data = await request({
     query: GET_HOME,
-    variables: { limit: 10 },
-    includeDrafts: context.preview,
-    preview: context.preview,
+    includeDrafts: preview,
+    preview: preview,
   });
   return {
-    props: { data },
+    props: { data, preview: !!preview },
   };
 }

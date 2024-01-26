@@ -6,7 +6,8 @@ import GlobalNavigation from "@components/Global/GlobalNavigation";
 import GlobalFooter from "@components/Global/GlobalFooter";
 import { ibmPlexMono, ibmPlexSans } from "@lib/fonts";
 import { useStore } from "@lib/store";
-
+import { ThemeContext } from "@lib/ctx";
+import PreviewToolbar from "core/PreviewToolbar";
 export default function App({ Component, pageProps }) {
   // const [isTouch, setIsTouch] = useState(false);
   const isTouch = useStore(({ isTouch }) => isTouch);
@@ -28,10 +29,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="preconnect" href={`//graphql.datocms.com`}></link>
         <link rel="dns-preconnect" href="https://datocms-assets.com"></link>
         <link rel="dns-prefetch" href="https://datocms-assets.com"></link>
@@ -48,9 +46,13 @@ export default function App({ Component, pageProps }) {
           }
         `}</style>
       </Head>
-      <GlobalNavigation classes="js-site js-site--mobile" />
-      <Component {...pageProps} />
-      <GlobalFooter classes="js-site js-site--mobile" />
+
+      <ThemeContext>
+        <GlobalNavigation classes="js-site js-site--mobile" />
+        <Component {...pageProps} />
+        {/* <PreviewToolbar preview={preview} /> */}
+        <GlobalFooter classes="js-site js-site--mobile" />
+      </ThemeContext>
     </>
   );
 }

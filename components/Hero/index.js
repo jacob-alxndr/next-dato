@@ -1,28 +1,27 @@
 import clsx from "clsx";
 import styles from "@styles/Hero/index.module.scss";
-import { useState } from "react";
 import { StructuredText } from "react-datocms";
+import { useTheme } from "@lib/ctx";
 const Hero = (props) => {
-  const [data, setData] = useState(props);
-  const {
-    eyebrow,
-    title,
-    subtitle,
-    description,
-    titleSize,
-    backgroundColor,
-    backgroundImage,
-    backgroundMedia,
-  } = data;
-
+  const { eyebrow, title, description, titleSize, backgroundColor, backgroundImage, backgroundMedia } =
+    props;
+  const { dark } = useTheme();
   return (
     <div className={clsx(styles.container)}>
       <div className={clsx(styles.header, "padding-x-lg")}>
         <div className={styles.content}>
-          <div className={clsx(styles.eyebrow)}>{eyebrow}</div>
-          <div className={clsx(styles.title, `u-heading--${titleSize}`)}>{title}</div>
+          <div className={clsx(styles.eyebrow)}>
+            <span>{eyebrow}</span>
+          </div>
+          <div className={clsx(styles.title, `u-heading--${titleSize}`)}>
+            {" "}
+            <h1>{title}</h1>
+          </div>
           <div className={styles.description}>
-            <StructuredText data={description} />
+            <p>
+              {" "}
+              <StructuredText data={description} />
+            </p>
           </div>
         </div>
       </div>
@@ -31,7 +30,7 @@ const Hero = (props) => {
         className={styles.background}
         style={{
           backgroundColor: `${backgroundColor?.hex}`,
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: dark ? `url(${backgroundImage})` : "none",
           backgroundPosition: `${backgroundMedia[0]?.horizontalAlignment} ${backgroundMedia[0]?.verticalAlignment}`,
         }}
       ></div>

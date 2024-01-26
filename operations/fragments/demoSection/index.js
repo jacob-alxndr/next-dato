@@ -1,4 +1,4 @@
-import Buttons from '../../imports/buttons';
+import Buttons from "../../imports/buttons";
 
 const DemoSectionFields = `
 fragment DemoSectionFields on DemosectionRecord {

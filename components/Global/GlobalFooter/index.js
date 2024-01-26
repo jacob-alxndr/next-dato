@@ -4,11 +4,15 @@ import clsx from "clsx";
 import { renderButtons } from "@components/UtilityComponents/Button/utils";
 import Button from "@components/UtilityComponents/Button";
 import { useStore } from "@lib/store";
+import { useTheme } from "@lib/ctx";
+
 const GlobalFooter = (props) => {
   const { primaryColumns } = props;
   const footerData = useStore(({ footerData }) => footerData);
 
   const { pagesTitle } = footerData || props;
+  const { dark, toggleTheme } = useTheme();
+
   const renderColumns = () => {
     if (!primaryColumns) return "";
     return primaryColumns?.map((column, index) => {
@@ -28,7 +32,11 @@ const GlobalFooter = (props) => {
   };
 
   return (
-    <footer id={pagesTitle} className={clsx(styles.container, "padding-x-lg")}>
+    <footer
+      data-theme={dark ? "dark" : "light"}
+      id={pagesTitle}
+      className={clsx(styles.container, "padding-x-lg")}
+    >
       <div className={styles.content}>
         <div className={styles.logoContainer}>
           <Button
@@ -42,7 +50,12 @@ const GlobalFooter = (props) => {
         </div>
         <div className={styles.grid}>{renderColumns()}</div>
         <div className={styles.legal}>
-          &copy; {new Date().getFullYear()} {process.env.NEXT_PUBLIC_SITE_NAME}
+          <span>
+            {" "}
+            &copy; {new Date().getFullYear()} {process.env.NEXT_PUBLIC_SITE_NAME}
+            <br />
+            <button onClick={toggleTheme}>🎨 Theme</button>
+          </span>
         </div>
       </div>
     </footer>

@@ -43,7 +43,9 @@ const getButton = (button) => {
 
   let link = "/";
   if (buttonType === "internal") {
+    // console.log("button", button);
     link = button?.link ? linkResolver(button?.link) : "/";
+    // console.log("link", link);
   }
 
   if (button?.anchorId) {

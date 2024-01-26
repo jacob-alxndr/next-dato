@@ -89,7 +89,7 @@ export default wrapLines;
 export const pollDebug = (callback) => {
   // Poll global object
   const windowChecker = setInterval(() => {
-    console.log("polling for window.DEBUG.UI...");
+    // console.log("polling for window.DEBUG.UI...");
     const debug = window?.DEBUG?.ui;
 
     if (debug) {

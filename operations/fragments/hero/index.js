@@ -5,18 +5,13 @@ fragment HeroFields on HeroRecord {
     eyebrow
     title
   
-    description {
-        blocks
-        links
-        value
-      }
     id
     titleSize
     _modelApiKey
     id
     titleSize
     _modelApiKey
-    backgroundColor{hex}
+  
     backgroundMedia {
         ... on BackgroundImageRecord {
             ${BackgroundImageFields}
@@ -25,5 +20,10 @@ fragment HeroFields on HeroRecord {
 
 }  
 `;
-
+// description {
+//     blocks
+//     links
+//     value
+//   }
+// backgroundColor{hex}
 export default HeroFields;

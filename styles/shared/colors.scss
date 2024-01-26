@@ -3,17 +3,15 @@ $color-primary-400: #8be9fd;
 $color-primary-500: hsla(191, 97%, 77%, 0.1);
 $color-primary-700: hsla(191, 97%, 77%, 0.05);
 
-// Primary
-// $color-primary-400: #c0ff70;
-// $color-primary-500: #b5f465;
-
 // Secondary
 // $color-secondary-400: #fe6156;
 // $color-secondary-500: #f4493c;
 
 // Greys
-$color-white: #fff;
-$color-black: #121212;
+$color-ink: var(--color-ink);
+$color-paper: var(--color-paper);
+$color-white: #ffffff;
+$color-black: #1a1a1a;
 $color-grey-00: $color-white;
 $color-grey-10: #f4f4f4;
 $color-grey-20: #eeeeee;
@@ -23,7 +21,7 @@ $color-grey-50: #808080;
 $color-grey-60: #636363;
 $color-grey-70: #474747;
 $color-grey-800: #2a2a2a;
-$color-grey-90: #0e0e0e;
+$color-grey-90: #b41515;
 $color-grey-100: $color-black;
 
 // Typography

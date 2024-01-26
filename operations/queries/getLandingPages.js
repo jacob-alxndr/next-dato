@@ -1,19 +1,33 @@
+import DemoSectionFields from "../fragments/demoSection";
+import GlobalNavigationFields from "../fragments/globalNavigation";
+import GlobalFooterFields from "../fragments/globalFooter";
+import HeroFields from "../fragments/hero";
+
 const GET_LANDING_PAGE = `
 query LandingPageQuery($slug: String) {
     page: allLandingPages( filter: {slug: {eq: $slug}}) {
         _modelApiKey
         _publishedAt
         id
-
-                components {
+      
+        components {
             ... on DemosectionRecord {
                 ...DemoSectionFields
             }
-        }
-    
-    }    
+        }  hero {
+            ...HeroFields
+          }
+    } 
+    globalNavigation {
+        ${GlobalNavigationFields}
+    }
+    globalFooter {
+        ${GlobalFooterFields}
+    }
 }
 
+${HeroFields}
+${DemoSectionFields}
 
 
 `;

@@ -47,9 +47,6 @@ const Button = ({
       case "primary":
         buttonStyleClass = "c-button--primary";
         break;
-      case "primary-subscription":
-        buttonStyleClass = "c-button--primary-subscription";
-        break;
       case "secondary":
         buttonStyleClass = "c-button--secondary";
         break;

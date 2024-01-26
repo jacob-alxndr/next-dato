@@ -4,7 +4,7 @@
 // into a canonical URL within the website
 const generatePreviewUrl = ({ item, itemType, locale }) => {
   const localePrefix = locale === "en" ? "" : `/${locale}`;
-  console.log("item, itemType, locale: ", item, itemType, locale);
+  console.log(itemType);
   switch (itemType.attributes.api_key) {
     case "home":
       // return `/`;
@@ -29,6 +29,7 @@ const generateLinks = (req, res, env) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization"); // add any other headers you need
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self' https://plugins-cdn.datocms.com");
   res.setHeader("Content-Type", "application/json");
   // This will allow OPTIONS request
   if (req.method === "OPTIONS") {

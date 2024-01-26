@@ -1,12 +1,15 @@
 import { renderButtons } from "@components/UtilityComponents/Button/utils";
+import { useTheme } from "@lib/ctx";
 
-const DemoSection = (props) => {
+const DemoSection = (props, context) => {
   const { title, buttons } = props;
+  const { dark } = useTheme();
 
   return (
     <div
       style={{
-        backgroundColor: "#000",
+        backgroundColor: "var(--color-paper)",
+        color: "var(--color-ink)",
         height: "60vh",
         display: "flex",
         flexDirection: "column",
@@ -15,6 +18,7 @@ const DemoSection = (props) => {
       }}
     >
       <h1>{title}</h1>
+
       {renderButtons(buttons)}
     </div>
   );
